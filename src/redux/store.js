@@ -18,7 +18,7 @@ import { filtersReducer } from "./filtersSlise";
 const profilesConfig = {
   key: "contacts",
   storage,
-  whitelist: ["items"],
+  whitelist: ["contacts"],
 };
 
 export const store = configureStore({
