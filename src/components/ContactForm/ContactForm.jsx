@@ -1,8 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import * as Yup from "yup";
+
+import { addContacts } from "../../redux/contactsSlice";
+
 import css from "./ContactForm.module.css";
 
-function ContactForm({ handleSubmit }) {
+function ContactForm() {
+  const dispatch = useDispatch();
   const initialValues = {
     name: "",
     number: "",
@@ -18,6 +24,14 @@ function ContactForm({ handleSubmit }) {
       .max(50, "Too Long!")
       .required("Required"),
   });
+
+  const handleSubmit = (values, actions) => {
+    const newContact = { ...values, id: nanoid() };
+    dispatch(addContacts(newContact));
+
+    //setContacts([...contacts, newContact]);
+    actions.resetForm();
+  };
 
   return (
     <Formik
