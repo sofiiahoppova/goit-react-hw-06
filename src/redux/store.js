@@ -13,12 +13,12 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import { contactsReducer } from "./contactsSlice";
-import { filtersReducer } from "./filtersSlise";
+import { filtersReducer } from "./filtersSlice";
 
 const profilesConfig = {
   key: "contacts",
   storage,
-  whitelist: ["items"],
+  whitelist: ["contacts"],
 };
 
 export const store = configureStore({
